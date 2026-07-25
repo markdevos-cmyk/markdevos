@@ -1,65 +1,111 @@
-import Image from "next/image";
+'use client';
+
+import { Briefcase, Zap, Image as ImageIcon, Share2, Link, ArrowRight } from 'lucide-react';
 
 export default function Home() {
+  const links = [
+    {
+      name: 'Tofadvies',
+      url: 'https://www.tofadvies.nl',
+      icon: Briefcase,
+      description: 'Duidelijk krijgen wat er werkelijk speelt',
+      color: 'from-blue-600 to-blue-700',
+    },
+    {
+      name: 'AgileAccelerator',
+      url: 'https://www.agileaccelerator.nl',
+      icon: Zap,
+      description: 'Agile coaching, training & workshops',
+      color: 'from-amber-500 to-amber-600',
+    },
+    {
+      name: 'Oldfox Gallery',
+      url: 'https://www.oldfox.gallery',
+      icon: ImageIcon,
+      description: 'I find what others walk past',
+      color: 'from-amber-700 to-amber-800',
+    },
+    {
+      name: 'Instagram',
+      url: 'https://instagram.com/oldfox.gallery',
+      icon: Share2,
+      description: '@oldfox.gallery — recent finds',
+      color: 'from-pink-600 to-purple-600',
+    },
+    {
+      name: 'LinkedIn',
+      url: 'https://linkedin.com/in/mbdevos',
+      icon: Link,
+      description: 'Professional profile & insights',
+      color: 'from-blue-700 to-blue-800',
+    },
+  ];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 flex items-center justify-center px-4 py-12">
+      <div className="w-full max-w-2xl">
+        {/* Header */}
+        <div className="text-center mb-20">
+          <h1 className="text-5xl md:text-6xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">
+            Mark de Vos
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 font-light">
+            Consultant • Strategist • Curator
           </p>
+          <div className="h-1 w-12 bg-gradient-to-r from-blue-600 to-amber-600 mx-auto mt-6 rounded-full"></div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+
+        {/* Links */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+          {links.map((link) => {
+            const Icon = link.icon;
+            return (
+              <a
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 p-6 hover:border-slate-400 dark:hover:border-slate-600 transition-all duration-300 bg-white dark:bg-slate-900/50 hover:shadow-lg dark:hover:shadow-2xl dark:hover:shadow-slate-900/50"
+              >
+                {/* Gradient background on hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${link.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
+
+                <div className="relative">
+                  <div className="flex items-start justify-between mb-4">
+                    <Icon className={`w-8 h-8 transition-transform duration-300 group-hover:scale-110 bg-gradient-to-br ${link.color} text-white p-1.5 rounded-lg`} />
+                    <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300 transform translate-x-0 group-hover:translate-x-1 transition-all duration-300" />
+                  </div>
+
+                  <h3 className="font-bold text-slate-900 dark:text-white text-lg mb-1">
+                    {link.name}
+                  </h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    {link.description}
+                  </p>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+
+        {/* CTA Section */}
+        <div className="text-center p-8 bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-800 dark:to-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
+          <p className="text-slate-700 dark:text-slate-300 text-sm mb-4">
+            Zoekende naar advies, training, kunstwerk, of gewoon even kennismaken?
+          </p>
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="https://www.tofadvies.nl#61FF3520-B2B4-4CA5-BA74-8ACDC8A1A4CC"
+            className="inline-block px-6 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg font-semibold hover:shadow-lg transition-shadow duration-300"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+            Laten we kennismaken
           </a>
         </div>
-      </main>
+
+        {/* Footer */}
+        <div className="text-center mt-12 text-xs text-slate-500 dark:text-slate-500">
+          <p>© 2026 Mark de Vos • <a href="https://www.linkedin.com/in/mbdevos" className="hover:text-slate-700 dark:hover:text-slate-300">LinkedIn</a></p>
+        </div>
+      </div>
     </div>
   );
 }
