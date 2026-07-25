@@ -1,33 +1,36 @@
 'use client';
 
-import { ExternalLink } from 'lucide-react';
-
 export default function Home() {
   const links = [
     {
       name: 'TOF Advies',
       subtitle: 'Organisatieadvies',
       url: 'https://www.tofadvies.nl',
+      logo: '/logos/tofadvies.svg',
     },
     {
       name: 'Agile Accelerator',
       subtitle: 'Training & coaching',
       url: 'https://www.agileaccelerator.nl',
+      logo: '/logos/agileaccelerator.svg',
     },
     {
       name: 'Old Fox Gallery',
       subtitle: 'In- en verkoop van kunst',
       url: 'https://www.oldfox.gallery',
+      logo: '/logos/oldfox.svg',
     },
     {
       name: '@oldfox.gallery',
       subtitle: 'De laatste vondsten',
       url: 'https://instagram.com/oldfox.gallery',
+      logo: '/logos/instagram.svg',
     },
     {
       name: 'LinkedIn',
       subtitle: 'Professioneel profiel',
       url: 'https://linkedin.com/in/mbdevos',
+      logo: '/logos/linkedin.svg',
     },
   ];
 
@@ -52,9 +55,17 @@ export default function Home() {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between p-4 group border border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600 transition-colors duration-200"
+              className="flex items-center gap-4 p-4 group border border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600 transition-colors duration-200"
             >
-              <div className="flex-1">
+              <img
+                src={link.logo}
+                alt={link.name}
+                className="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors flex-shrink-0"
+                style={{
+                  filter: 'currentColor',
+                }}
+              />
+              <div className="flex-1 min-w-0">
                 <h3 className="text-lg font-medium text-slate-900 dark:text-white group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors">
                   {link.name}
                 </h3>
@@ -62,7 +73,9 @@ export default function Home() {
                   {link.subtitle}
                 </p>
               </div>
-              <ExternalLink className="w-5 h-5 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors ml-4 flex-shrink-0" />
+              <svg className="w-5 h-5 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </a>
           ))}
         </div>
