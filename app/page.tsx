@@ -11,7 +11,7 @@ export default function Home() {
     {
       name: 'Agile Accelerator',
       subtitle: 'Training & coaching',
-      url: 'https://www.agileaccelerator.nl',
+      url: 'https://agileaccelerator.nl',
       logo: '/logos/agileaccelerator.svg',
     },
     {
